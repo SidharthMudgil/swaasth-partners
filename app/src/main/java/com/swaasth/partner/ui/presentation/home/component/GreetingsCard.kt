@@ -28,7 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swaasth.partner.ui.theme.Blue80
-import com.swaasth.partner.ui.theme.Purple
+import com.swaasth.partner.ui.theme.RedBlue
 import com.swaasth.partner.ui.theme.White
 
 @Composable
@@ -51,7 +51,7 @@ fun GreetingsCard(
                         start = Offset(0f, Float.POSITIVE_INFINITY),
                         end = Offset(Float.POSITIVE_INFINITY, 0f),
                         colors = listOf(
-                            Purple, Blue80
+                            RedBlue, Blue80
                         ),
                     )
                 )

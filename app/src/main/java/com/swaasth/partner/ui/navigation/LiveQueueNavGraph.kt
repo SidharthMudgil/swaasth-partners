@@ -4,7 +4,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.swaasth.partner.ui.presentation.queue.PatientDetailsScreen
+import com.swaasth.partner.ui.presentation.view_details.ViewDetailsScreen
 
 fun NavGraphBuilder.liveQueueNavGraph(
     navController: NavHostController
@@ -14,7 +14,7 @@ fun NavGraphBuilder.liveQueueNavGraph(
         startDestination = LiveQueueGraph.PatientDetails.route
     ) {
         composable(LiveQueueGraph.PatientDetails.route) {
-            PatientDetailsScreen()
+            ViewDetailsScreen({})
         }
     }
 }
