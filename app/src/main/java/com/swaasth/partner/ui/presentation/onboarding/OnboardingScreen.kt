@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swaasth.partner.R
+import com.swaasth.partner.ui.theme.Grey20
 import com.swaasth.partner.ui.theme.Grey80
 
 @Composable
@@ -39,7 +40,6 @@ fun OnboardingScreen(onClick: () -> Unit) {
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(1.3f)
         )
 
         Spacer(modifier = Modifier.padding(bottom = 32.dp))
@@ -47,18 +47,11 @@ fun OnboardingScreen(onClick: () -> Unit) {
             text = "Connecting Care, One Click at a Time.",
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
-            color = Grey80,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = "Connecting Care, One Click at a Time.",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Normal,
-            color = Grey80,
+            color = Grey20,
             textAlign = TextAlign.Center
         )
 
-        Spacer(modifier = Modifier.padding(bottom = 64.dp))
+        Spacer(modifier = Modifier.padding(bottom = 16.dp))
         Button(
             onClick = onClick,
             shape = RoundedCornerShape(12.dp),
