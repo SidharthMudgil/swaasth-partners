@@ -19,7 +19,7 @@ fun NavGraphBuilder.profileNavGraph(
         }
 
         composable(ProfileGraph.BookingHistory.route) {
-            BookingHistoryScreen()
+            BookingHistoryScreen({})
         }
     }
 }
