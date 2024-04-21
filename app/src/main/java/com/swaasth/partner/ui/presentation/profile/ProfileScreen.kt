@@ -45,7 +45,7 @@ fun ProfileScreen(
         name = "Susanna Townsend",
         phone = "(236) 505-1479",
         email = "liz.frank@example.com",
-        sex = Gender.TRANS,
+        sex = Gender.FEMALE,
         dob = 5129,
         image = "brute"
     )
@@ -98,22 +98,6 @@ fun ProfileScreen(
             title = "Edit profile"
         ) {
             onEditClick()
-        }
-
-        Spacer(modifier = Modifier.padding(bottom = 12.dp))
-        ProfileButton(
-            icon = Icons.Rounded.LocalHospital,
-            title = "Add Prescription"
-        ) {
-            onMediaClick()
-        }
-
-        Spacer(modifier = Modifier.padding(bottom = 8.dp))
-        ProfileButton(
-            icon = Icons.Rounded.CalendarToday,
-            title = "Add Report"
-        ) {
-            onMediaClick()
         }
 
         Spacer(modifier = Modifier.padding(bottom = 8.dp))

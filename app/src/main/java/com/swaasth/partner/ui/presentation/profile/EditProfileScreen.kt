@@ -15,6 +15,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBackIosNew
+import androidx.compose.material.icons.rounded.History
+import androidx.compose.material.icons.rounded.LocationOn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -110,6 +112,24 @@ fun EditProfileScreen(
             InputField(
                 hint = "Age",
                 outlined = true,
+                onValueChange = {
+
+                }
+            )
+
+            InputField(
+                hint = "Hospital, Clinic Address",
+                outlined = true,
+                trailingIcon = Icons.Rounded.LocationOn,
+                onValueChange = {
+
+                }
+            )
+
+            InputField(
+                hint = "Change Clinic Timings",
+                outlined = true,
+                trailingIcon = Icons.Rounded.History,
                 onValueChange = {
 
                 }
