@@ -10,7 +10,7 @@ val Indigo80 = Color(0xFF154FB3)
 val Indigo40 = Color(0xFF87A5FF)
 val Indigo20 = Color(0xFFC3D2FF)
 
-val Purple = Color(0xFF9B7985)
+val Purple = Color(0xFFFF3030)
 val Green = Color(0xFF00AA0F)
 val Red = Color(0xFFFF0000)
 

@@ -42,7 +42,7 @@ fun MainScreen(
             modifier = Modifier.padding(it)
         ) {
             composable(BottomNavItem.Home.route) {
-                HomeScreen()
+                HomeScreen({},{},{})
             }
             composable(BottomNavItem.AddPatient.route) {
                 AddPatientScreen()
