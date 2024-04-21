@@ -15,7 +15,7 @@ fun NavGraphBuilder.profileNavGraph(
         startDestination = ProfileGraph.EditProfile.route
     ) {
         composable(ProfileGraph.EditProfile.route) {
-            EditProfileScreen()
+            EditProfileScreen({},{})
         }
 
         composable(ProfileGraph.BookingHistory.route) {

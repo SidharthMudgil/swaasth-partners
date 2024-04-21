@@ -27,7 +27,7 @@ fun RootNavigationGraph(navController: NavHostController) {
         }
         authNavGraph(navController = navController)
         composable(route = Graph.ONBOARDING) {
-            OnboardingScreen()
+            OnboardingScreen({})
         }
     }
 }

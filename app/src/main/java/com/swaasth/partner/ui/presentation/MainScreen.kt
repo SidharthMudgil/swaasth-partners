@@ -51,7 +51,9 @@ fun MainScreen(
                 LiveQueueScreen()
             }
             composable(BottomNavItem.Profile.route) {
-                ProfileScreen()
+                ProfileScreen(
+                    {}, {}, {}
+                )
             }
             homeNavGraph(navController)
             profileNavGraph(navController)

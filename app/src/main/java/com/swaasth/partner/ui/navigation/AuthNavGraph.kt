@@ -15,11 +15,11 @@ fun NavGraphBuilder.authNavGraph(
         startDestination = AuthGraph.Login.route
     ) {
         composable(AuthGraph.Login.route) {
-            LoginScreen()
+            LoginScreen({})
         }
 
         composable(AuthGraph.OTP.route) {
-            OtpScreen()
+            OtpScreen({}, {})
         }
 
 //        onboardingNavGraph()
