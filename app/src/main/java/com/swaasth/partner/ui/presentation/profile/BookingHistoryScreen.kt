@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.swaasth.partner.domain.model.Patient
 import com.swaasth.partner.ui.component.InputField
 import com.swaasth.partner.ui.component.PatientItemCard
 import com.swaasth.partner.ui.component.TimePickerDialog
@@ -128,7 +129,15 @@ fun BookingHistoryScreen(
                     .padding(top = 16.dp)
             ) {
                 items(mutableListOf<Int>()) {
-                    PatientItemCard()
+                    PatientItemCard(
+                        Patient(
+                            id = "solet",
+                            name = "Joan Maynard",
+                            age = "sapien",
+                            gender = "ultricies",
+                            status = "fastidii"
+                        )
+                    )
                 }
             }
 
