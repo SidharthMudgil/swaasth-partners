@@ -30,7 +30,8 @@ fun PatientItemCard(
     patient: Patient,
     showButton: Boolean = true,
     negativeColor: Boolean = false,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    buttonLabel: String = "View Details"
 ) {
     val border = if (negativeColor) Transparent else Grey20
     val background = if (negativeColor) Blue80 else White
@@ -79,7 +80,7 @@ fun PatientItemCard(
                     modifier = Modifier.width(90.dp)
                 ) {
                     Text(
-                        text = "View Details",
+                        text = buttonLabel,
                         fontSize = 12.sp,
                         textAlign = TextAlign.Center
                     )

@@ -53,6 +53,24 @@ fun BookingHistoryScreen(
     val timePickerState = rememberTimePickerState()
     var showTimePicker by remember { mutableStateOf(false) }
 
+    val demoPatients = listOf(
+        Patient(
+            id = "1", name = "Alyce Molina", age = "23", gender = "Male", status = "debet"
+        ),
+        Patient(
+            id = "2", name = "Grover Fulton", age = "23", gender = "Male", status = "dicit"
+        ),
+        Patient(
+            id = "3", name = "Leta Garner", age = "22", gender = "Female", status = "cum"
+        ),
+        Patient(
+            id = "4", name = "Delores Griffin", age = "25", gender = "Male", status = "accusata"
+        ),
+        Patient(
+            id = "5", name = "Carmelo McIntyre", age = "34", gender = "Male", status = "mea"
+        )
+    )
+
     Scaffold {
         Column(
             modifier = Modifier
@@ -124,20 +142,13 @@ fun BookingHistoryScreen(
             }
 
             LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier
                     .weight(1f)
                     .padding(top = 16.dp)
             ) {
-                items(mutableListOf<Int>()) {
-                    PatientItemCard(
-                        Patient(
-                            id = "solet",
-                            name = "Joan Maynard",
-                            age = "sapien",
-                            gender = "ultricies",
-                            status = "fastidii"
-                        )
-                    )
+                items(demoPatients) {
+                    PatientItemCard(it, buttonLabel = listOf("Online", "Offline").random())
                 }
             }
 
