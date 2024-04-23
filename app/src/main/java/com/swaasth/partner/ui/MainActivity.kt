@@ -15,6 +15,7 @@ import com.swaasth.partner.ui.presentation.onboarding.OnboardingScreen
 import com.swaasth.partner.ui.presentation.profile.BookingHistoryScreen
 import com.swaasth.partner.ui.presentation.profile.EditProfileScreen
 import com.swaasth.partner.ui.presentation.profile.ProfileScreen
+import com.swaasth.partner.ui.presentation.queue.LiveQueueScreen
 import com.swaasth.partner.ui.presentation.splash.SplashScreen
 import com.swaasth.partner.ui.presentation.view_details.ViewDetailsScreen
 import com.swaasth.partner.ui.theme.SwaasthTheme
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SwaasthTheme {
-                BookingHistoryScreen({})
+                LiveQueueScreen(    )
 //                SwaasthApp(rememberNavController())
             }
         }

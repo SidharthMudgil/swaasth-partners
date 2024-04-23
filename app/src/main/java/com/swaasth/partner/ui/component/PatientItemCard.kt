@@ -90,7 +90,8 @@ fun PatientItemCard(
                     text = patient.status,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.ExtraBold,
-                    color = foreground
+                    color = foreground,
+                    modifier = Modifier.padding(vertical = 12.dp)
                 )
             }
         }
