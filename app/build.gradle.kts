@@ -89,4 +89,5 @@ dependencies {
     implementation(libs.androidx.material.icons.extended.android)
     implementation(libs.dotsindicator)
     implementation(libs.ohteepee)
+    implementation(libs.androidx.constraintlayout.compose)
 }
