@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
@@ -28,13 +27,13 @@ import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import com.swaasth.partner.ui.theme.Blue80
-import com.swaasth.partner.ui.theme.Grey20
+import com.swaasth.partner.ui.theme.Grey10
 import com.swaasth.partner.ui.theme.Grey80
 import com.swaasth.partner.ui.theme.White
 
 @Composable
 fun PagerIndicator(
-    activePage: Int = 3
+    activePage: Int = 2
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -49,7 +48,15 @@ fun PagerIndicator(
                     .layoutId("bar1")
                     .width(150.dp)
                     .height(4.dp)
-                    .background(if (activePage > 1) Blue80 else Grey20)
+                    .background(if (activePage > 1) Blue80 else Grey10)
+            )
+
+            Spacer(
+                modifier = Modifier
+                    .layoutId("bar2")
+                    .height(4.dp)
+                    .width(100.dp)
+                    .background(if (activePage > 2) Blue80 else Grey10)
             )
 
             Box(
@@ -77,8 +84,9 @@ fun PagerIndicator(
 
             Text(
                 text = "Personal\nInformation",
+                fontSize = 14.sp,
                 textAlign = TextAlign.Center,
-                color = if (activePage == 1) Grey80 else Grey20,
+                color = if (activePage == 1) Grey80 else Grey10,
                 modifier = Modifier.layoutId("title1")
             )
 
@@ -87,7 +95,7 @@ fun PagerIndicator(
                 modifier = Modifier
                     .layoutId("indicator2")
                     .size(48.dp)
-                    .background(if (activePage > 1) Blue80 else Grey20, CircleShape)
+                    .background(if (activePage > 1) Blue80 else Grey10, CircleShape)
             ) {
                 if (activePage > 1) {
                     if (activePage == 2) {
@@ -109,17 +117,10 @@ fun PagerIndicator(
 
             Text(
                 text = "Professional\nInformation",
+                fontSize = 14.sp,
                 textAlign = TextAlign.Center,
-                color = if (activePage == 2) Grey80 else Grey20,
+                color = if (activePage == 2) Grey80 else Grey10,
                 modifier = Modifier.layoutId("title2")
-            )
-
-            Spacer(
-                modifier = Modifier
-                    .layoutId("bar2")
-                    .height(4.dp)
-                    .width(100.dp)
-                    .background(if (activePage > 2) Blue80 else Grey20)
             )
 
             Box(
@@ -127,7 +128,7 @@ fun PagerIndicator(
                 modifier = Modifier
                     .layoutId("indicator3")
                     .size(48.dp)
-                    .background(if (activePage > 2) Blue80 else Grey20, CircleShape)
+                    .background(if (activePage > 2) Blue80 else Grey10, CircleShape)
             ) {
                 if (activePage > 2) {
                     if (activePage == 3) {
@@ -152,7 +153,8 @@ fun PagerIndicator(
 
             Text(
                 text = "Verification",
-                color = if (activePage == 3) Grey80 else Grey20,
+                fontSize = 14.sp,
+                color = if (activePage == 3) Grey80 else Grey10,
                 modifier = Modifier.layoutId("title3")
             )
         }

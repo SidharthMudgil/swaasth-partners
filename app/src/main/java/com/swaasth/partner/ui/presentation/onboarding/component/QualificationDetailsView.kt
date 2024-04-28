@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swaasth.partner.ui.component.DropdownInput
@@ -44,6 +45,7 @@ import com.swaasth.partner.ui.component.InputField
 import com.swaasth.partner.ui.theme.Blue80
 import com.swaasth.partner.ui.theme.Grey10
 import com.swaasth.partner.ui.theme.Grey40
+import com.swaasth.partner.ui.theme.Grey80
 import com.swaasth.partner.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,13 +53,17 @@ import com.swaasth.partner.ui.theme.White
 fun QualificationDetailsView() {
     var prefix by remember { mutableStateOf("+91") }
     var expandedState by remember { mutableStateOf(false) }
+    var expandedState1 by remember { mutableStateOf(false) }
+    var selectedItem by remember { mutableStateOf("06:00 pm-07:00 pm") }
 
     Scaffold {
         Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
                 .padding(it)
+                .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
         ) {
             TextButton(
                 onClick = {  },
@@ -75,13 +81,33 @@ fun QualificationDetailsView() {
                 Text(text = "Back")
             }
 
-            Text(text = "Qualification")
-            InputField(hint = "MBBS, MD", onValueChange = { })
-            InputField(hint = "Enter your specialization", onValueChange = { })
+            PagerIndicator(2)
 
-            Text(text = "Clinic information")
-            InputField(hint = "Enter your clinic or hospital name", onValueChange = {  })
-            InputField(hint = "Search for clinic location", onValueChange = {  })
+            Text(
+                text = "Qualification",
+                fontWeight = FontWeight.SemiBold,
+                color = Grey80,
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            InputField(
+                hint = "MBBS, MD", onValueChange = { }, outlined = true
+            )
+            InputField(
+                hint = "Enter your specialization", onValueChange = { }, outlined = true
+            )
+
+            Text(
+                text = "Clinic information",
+                fontWeight = FontWeight.SemiBold,
+                color = Grey80,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+            InputField(
+                hint = "Enter your clinic or hospital name", onValueChange = {  }, outlined = true
+            )
+            InputField(
+                hint = "Search for clinic location", onValueChange = {  }, outlined = true
+            )
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
@@ -157,18 +183,25 @@ fun QualificationDetailsView() {
                 }
             }
             
-            InputField(hint = "₹ Enter your fees", onValueChange = { })
+            InputField(
+                hint = "₹ Enter your fees", onValueChange = { }, outlined = true
+            )
             
-            Text(text = "Clinic timing")
+            Text(
+                text = "Clinic timing",
+                fontWeight = FontWeight.SemiBold,
+                color = Grey80,
+                modifier = Modifier.padding(8.dp)
+            )
             DropdownInput(
-                selected = "",
-                expanded = false,
-                items = listOf(),
-                onExpandedChange = {  },
-                onValueChange = {},
-                onItemClick =  {}
+                selected = "06:00 pm-07:00 pm",
+                expanded = expandedState1,
+                items = listOf("06:00 pm-07:00 pm", "06:00 pm-07:00 pm", "06:00 pm-07:00 pm"),
+                onExpandedChange = { expandedState1 = !expandedState1 },
+                onValueChange = { it1 -> selectedItem = it1 },
+                onItemClick =  { it1 -> selectedItem = it1 }
             ) {
-
+                expandedState1 = false
             }
 
             Spacer(modifier = Modifier.weight(1f))
@@ -187,4 +220,10 @@ fun QualificationDetailsView() {
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun QualificationDetailsViewPreview() {
+    QualificationDetailsView()
 }
