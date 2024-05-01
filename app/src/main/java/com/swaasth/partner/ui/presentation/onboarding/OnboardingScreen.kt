@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swaasth.partner.R
 import com.swaasth.partner.ui.theme.Grey20
-import com.swaasth.partner.ui.theme.Grey80
 
 @Composable
 fun OnboardingScreen(onClick: () -> Unit) {
@@ -70,7 +68,5 @@ fun OnboardingScreen(onClick: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 private fun OnboardingScreenPreview() {
-    OnboardingScreen {
-
-    }
+    OnboardingScreen {}
 }

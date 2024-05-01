@@ -19,9 +19,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.swaasth.partner.ui.navigation.Graph
+import com.swaasth.partner.ui.navigation.HomeGraph
+import com.swaasth.partner.ui.navigation.LiveQueueGraph
 import com.swaasth.partner.ui.navigation.ProfileGraph
 import com.swaasth.partner.ui.navigation.component.BottomNavItem
 import com.swaasth.partner.ui.navigation.homeNavGraph
+import com.swaasth.partner.ui.navigation.liveQueueNavGraph
 import com.swaasth.partner.ui.navigation.profileNavGraph
 import com.swaasth.partner.ui.presentation.add_patient.AddPatientScreen
 import com.swaasth.partner.ui.presentation.home.HomeScreen
@@ -42,19 +45,36 @@ fun MainScreen(
             modifier = Modifier.padding(it)
         ) {
             composable(BottomNavItem.Home.route) {
-                HomeScreen({},{},{})
+                HomeScreen(
+                    onQrClick = {},
+                    onNotificationClick = {
+                        navController.navigate(HomeGraph.Notifications.route)
+                    },
+                    onDoctorClick = {
+                        navController.navigate(HomeGraph.PatientDetails.route)
+                    }
+                )
             }
             composable(BottomNavItem.AddPatient.route) {
                 AddPatientScreen()
             }
             composable(BottomNavItem.LiveQueue.route) {
-                LiveQueueScreen()
+                LiveQueueScreen {
+                    navController.navigate(LiveQueueGraph.PatientDetails.route)
+                }
             }
             composable(BottomNavItem.Profile.route) {
                 ProfileScreen(
-                    {}, {}, {}
+                    onMediaClick = {},
+                    onEditClick = {
+                        navController.navigate(ProfileGraph.EditProfile.route)
+                    },
+                    onHistoryClick = {
+                        navController.navigate(ProfileGraph.BookingHistory.route)
+                    }
                 )
             }
+            liveQueueNavGraph(navController)
             homeNavGraph(navController)
             profileNavGraph(navController)
         }

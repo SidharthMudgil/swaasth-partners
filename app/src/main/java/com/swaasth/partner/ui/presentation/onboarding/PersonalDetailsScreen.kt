@@ -1,4 +1,4 @@
-package com.swaasth.partner.ui.presentation.onboarding.component
+package com.swaasth.partner.ui.presentation.onboarding
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,11 +29,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swaasth.partner.ui.component.InputField
+import com.swaasth.partner.ui.presentation.onboarding.component.GenderCard
+import com.swaasth.partner.ui.presentation.onboarding.component.PagerIndicator
 import com.swaasth.partner.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PersonalDetailsView() {
+fun PersonalDetailsScreen(
+    onClick: () -> Unit
+) {
     val datePickerState = rememberDatePickerState()
     var showDatePicker by remember { mutableStateOf(false) }
     var gender by remember { mutableIntStateOf(0) }
@@ -115,7 +119,7 @@ fun PersonalDetailsView() {
             Button(
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {}
+                onClick = onClick
             ) {
                 Text(
                     text = "Next",
@@ -153,6 +157,6 @@ fun PersonalDetailsView() {
 
 @Preview
 @Composable
-private fun PersonalDetailsViewPreview() {
-    PersonalDetailsView()
+private fun PersonalDetailsScreenPreview() {
+    PersonalDetailsScreen{}
 }

@@ -25,7 +25,7 @@ import com.swaasth.partner.ui.theme.White
 
 @Composable
 fun SplashScreen(
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController
 ) {
     Scaffold {
         Column(

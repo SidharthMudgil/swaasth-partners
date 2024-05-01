@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.swaasth.partner.ui.presentation.onboarding.OnboardingScreen
+import com.swaasth.partner.ui.presentation.MainScreen
 import com.swaasth.partner.ui.presentation.splash.SplashScreen
 
 @Composable
@@ -22,12 +22,16 @@ fun RootNavigationGraph(navController: NavHostController) {
             route = Graph.SPLASH
         ) {
             composable(splashScreen) {
-                SplashScreen()
+                SplashScreen(navController)
             }
         }
+
         authNavGraph(navController = navController)
-        composable(route = Graph.ONBOARDING) {
-            OnboardingScreen({})
+
+        onboardingNavGraph(navController = navController)
+
+        composable(route = Graph.MAIN) {
+            MainScreen()
         }
     }
 }

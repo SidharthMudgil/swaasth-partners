@@ -1,4 +1,4 @@
-package com.swaasth.partner.ui.presentation.onboarding.component
+package com.swaasth.partner.ui.presentation.onboarding
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swaasth.partner.ui.component.DropdownInput
 import com.swaasth.partner.ui.component.InputField
+import com.swaasth.partner.ui.presentation.onboarding.component.PagerIndicator
 import com.swaasth.partner.ui.theme.Blue80
 import com.swaasth.partner.ui.theme.Grey10
 import com.swaasth.partner.ui.theme.Grey40
@@ -50,7 +51,10 @@ import com.swaasth.partner.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QualificationDetailsView() {
+fun QualificationDetailsScreen(
+    onClick: () -> Unit,
+    onBackClick: () -> Unit
+) {
     var prefix by remember { mutableStateOf("+91") }
     var expandedState by remember { mutableStateOf(false) }
     var expandedState1 by remember { mutableStateOf(false) }
@@ -66,7 +70,7 @@ fun QualificationDetailsView() {
                 .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
         ) {
             TextButton(
-                onClick = {  },
+                onClick = onBackClick,
                 contentPadding = PaddingValues(0.dp),
                 modifier = Modifier
                     .align(Alignment.Start)
@@ -209,7 +213,7 @@ fun QualificationDetailsView() {
             Button(
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {}
+                onClick = onClick
             ) {
                 Text(
                     text = "Next",
@@ -224,6 +228,6 @@ fun QualificationDetailsView() {
 
 @Preview
 @Composable
-private fun QualificationDetailsViewPreview() {
-    QualificationDetailsView()
+private fun QualificationDetailsScreenPreview() {
+    QualificationDetailsScreen(onClick = {}, onBackClick = {})
 }

@@ -15,11 +15,15 @@ fun NavGraphBuilder.profileNavGraph(
         startDestination = ProfileGraph.EditProfile.route
     ) {
         composable(ProfileGraph.EditProfile.route) {
-            EditProfileScreen({},{})
+            EditProfileScreen(
+                onClick = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() })
         }
 
         composable(ProfileGraph.BookingHistory.route) {
-            BookingHistoryScreen({})
+            BookingHistoryScreen {
+                navController.popBackStack()
+            }
         }
     }
 }

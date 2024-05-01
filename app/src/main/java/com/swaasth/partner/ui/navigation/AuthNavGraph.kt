@@ -15,14 +15,25 @@ fun NavGraphBuilder.authNavGraph(
         startDestination = AuthGraph.Login.route
     ) {
         composable(AuthGraph.Login.route) {
-            LoginScreen({})
+            LoginScreen {
+                navController.navigate(AuthGraph.OTP.route)
+            }
         }
 
         composable(AuthGraph.OTP.route) {
-            OtpScreen({}, {})
+            OtpScreen(
+                onClick = {
+                    navController.navigate(Graph.ONBOARDING) {
+                        popUpTo(Graph.AUTHENTICATION) {
+                            inclusive = true
+                        }
+                    }
+                },
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
         }
-
-//        onboardingNavGraph()
     }
 }
 

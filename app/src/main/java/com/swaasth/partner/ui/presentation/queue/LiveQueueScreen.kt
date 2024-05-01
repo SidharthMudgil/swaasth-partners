@@ -43,7 +43,9 @@ import com.swaasth.partner.ui.theme.Grey80
 import com.swaasth.partner.ui.theme.White
 
 @Composable
-fun LiveQueueScreen() {
+fun LiveQueueScreen(
+    onClick: () -> Unit
+) {
     val nextInPatients = listOf(
         Patient(
             id = "1", name = "Mayank", age = "21", gender = "Male", status = ""
@@ -247,7 +249,7 @@ fun LiveQueueScreen() {
                 modifier = Modifier.heightIn(max = 500.dp)
             ) {
                 items(nextInPatients) {
-                    PatientItemCard(patient = it)
+                    PatientItemCard(patient = it, onClick = onClick)
                 }
             }
         }
@@ -291,5 +293,5 @@ fun LiveQueueScreen() {
 @Preview
 @Composable
 private fun LiveQueueScreenPreview() {
-    LiveQueueScreen()
+    LiveQueueScreen {}
 }

@@ -1,6 +1,7 @@
 package com.swaasth.partner.ui.presentation.profile
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -12,10 +13,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Logout
-import androidx.compose.material.icons.rounded.CalendarToday
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.History
-import androidx.compose.material.icons.rounded.LocalHospital
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,7 +46,7 @@ fun ProfileScreen(
         email = "liz.frank@example.com",
         sex = Gender.FEMALE,
         dob = 5129,
-        image = "brute"
+        image = "https://i.pinimg.com/originals/89/8d/b9/898db9d3675b46db2f2f822683eb4ec6.jpg"
     )
 
     Column(
@@ -75,6 +74,7 @@ fun ProfileScreen(
                 .background(White)
                 .size(250.dp, 200.dp)
                 .clip(RoundedCornerShape(12.dp))
+                .clickable { onMediaClick() }
         )
 
         Spacer(modifier = Modifier.padding(bottom = 8.dp))

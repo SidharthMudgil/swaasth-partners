@@ -1,4 +1,4 @@
-package com.swaasth.partner.ui.presentation.onboarding.component
+package com.swaasth.partner.ui.presentation.onboarding
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -31,12 +31,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swaasth.partner.ui.component.DropdownInput
 import com.swaasth.partner.ui.component.InputField
+import com.swaasth.partner.ui.presentation.onboarding.component.PagerIndicator
 import com.swaasth.partner.ui.theme.Blue80
 import com.swaasth.partner.ui.theme.Grey10
 import com.swaasth.partner.ui.theme.White
 
 @Composable
-fun VerificationDetailsView() {
+fun VerificationDetailsScreen(
+    onClick: () -> Unit,
+    onBackClick: () -> Unit
+) {
     Scaffold {
         Column(
             modifier = Modifier
@@ -47,7 +51,7 @@ fun VerificationDetailsView() {
                 .verticalScroll(rememberScrollState())
         ) {
             TextButton(
-                onClick = { },
+                onClick = onBackClick,
                 contentPadding = PaddingValues(0.dp),
                 modifier = Modifier
                     .align(Alignment.Start)
@@ -169,10 +173,10 @@ fun VerificationDetailsView() {
             Button(
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
-                onClick = {},
+                onClick = onClick,
             ) {
                 Text(
-                    text = "Next",
+                    text = "Submit",
                     fontWeight = FontWeight.SemiBold,
                     color = White,
                     modifier = Modifier.padding(8.dp)
@@ -184,6 +188,6 @@ fun VerificationDetailsView() {
 
 @Preview
 @Composable
-private fun VerificationDetailsViewPreview() {
-    VerificationDetailsView()
+private fun VerificationDetailsScreenPreview() {
+    VerificationDetailsScreen(onClick = {}, onBackClick = {})
 }
