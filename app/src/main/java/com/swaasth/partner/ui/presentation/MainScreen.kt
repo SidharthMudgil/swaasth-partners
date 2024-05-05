@@ -46,7 +46,6 @@ fun MainScreen(
         ) {
             composable(BottomNavItem.Home.route) {
                 HomeScreen(
-                    onQrClick = {},
                     onNotificationClick = {
                         navController.navigate(HomeGraph.Notifications.route)
                     },

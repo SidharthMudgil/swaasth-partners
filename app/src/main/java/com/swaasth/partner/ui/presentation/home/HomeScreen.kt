@@ -18,7 +18,6 @@ import com.swaasth.partner.ui.presentation.home.component.FiltersList
 
 @Composable
 fun HomeScreen(
-    onQrClick: () -> Unit,
     onNotificationClick: () -> Unit,
     onDetailsClick: () -> Unit,
 ) {
@@ -29,7 +28,7 @@ fun HomeScreen(
             .fillMaxWidth()
     ) {
         item {
-            GreetingsCard(onQrClick, onNotificationClick)
+            GreetingsCard(onNotificationClick)
         }
         item {
             BannersList()
@@ -53,5 +52,5 @@ fun HomeScreen(
 @Preview(showBackground = true)
 @Composable
 private fun HomeScreenPreview() {
-    HomeScreen({}, {}, {})
+    HomeScreen({}, {})
 }

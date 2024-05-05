@@ -46,7 +46,7 @@ fun ProfileScreen(
         email = "liz.frank@example.com",
         sex = Gender.FEMALE,
         dob = 5129,
-        image = "https://i.pinimg.com/originals/89/8d/b9/898db9d3675b46db2f2f822683eb4ec6.jpg"
+        image = "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg"
     )
 
     Column(
