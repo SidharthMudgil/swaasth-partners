@@ -23,6 +23,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -41,6 +45,11 @@ fun VerificationDetailsScreen(
     onClick: () -> Unit,
     onBackClick: () -> Unit
 ) {
+    var expandedState by remember { mutableStateOf(false) }
+    var expandedState1 by remember { mutableStateOf(false) }
+    var selectedItem by remember { mutableStateOf("2023") }
+    var selectedItem1 by remember { mutableStateOf("Haryana") }
+
     Scaffold {
         Column(
             modifier = Modifier
@@ -80,9 +89,10 @@ fun VerificationDetailsScreen(
             )
             Row(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(top = 8.dp)
             ) {
-                Text(text = "Upload your Aadhaar card", color = Blue80, fontSize = 12.sp)
+                Text(text = "Upload your Aadhaar card *", color = Blue80, fontSize = 12.sp)
                 Icon(
                     imageVector = Icons.Rounded.Upload, contentDescription = null,
                     modifier = Modifier.size(18.dp),
@@ -96,9 +106,10 @@ fun VerificationDetailsScreen(
             )
             Row(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(top = 8.dp)
             ) {
-                Text(text = "Upload your NMC Id", color = Blue80, fontSize = 12.sp)
+                Text(text = "Upload your NMC Id *", color = Blue80, fontSize = 12.sp)
                 Icon(
                     imageVector = Icons.Rounded.Upload, contentDescription = null,
                     modifier = Modifier.size(18.dp),
@@ -143,15 +154,16 @@ fun VerificationDetailsScreen(
                 modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
             )
             DropdownInput(
-                selected = "Select Year of Admission ",
-                expanded = false,
-                items = listOf(),
-                onExpandedChange = { },
-                onValueChange = {},
-                onItemClick = {}
+                selected = selectedItem,
+                expanded = expandedState,
+                items = listOf("2001", "2002", "2003"),
+                onExpandedChange = { expandedState = !expandedState },
+                onValueChange = { it1 -> selectedItem = it1 },
+                onItemClick = { it1 -> selectedItem = it1 }
             ) {
-
+                expandedState = false
             }
+
 
             Text(
                 text = "State Medical Council:  ",
@@ -160,19 +172,21 @@ fun VerificationDetailsScreen(
                 modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
             )
             DropdownInput(
-                selected = "Select State",
-                expanded = false,
-                items = listOf(),
-                onExpandedChange = { },
-                onValueChange = {},
-                onItemClick = {}
+                selected = selectedItem1,
+                expanded = expandedState1,
+                items = listOf("Haryana", "Delhi", "Telangana"),
+                onExpandedChange = { expandedState1 = !expandedState1 },
+                onValueChange = { it1 -> selectedItem1 = it1 },
+                onItemClick = { it1 -> selectedItem1 = it1 }
             ) {
-
+                expandedState1 = false
             }
 
             Button(
                 shape = RoundedCornerShape(12.dp),
-                modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
                 onClick = onClick,
             ) {
                 Text(

@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,6 +30,7 @@ import com.swaasth.partner.ui.theme.White
 
 @Composable
 fun GenderCard(
+    image: ImageVector,
     title: String,
     selected: Boolean,
     onClick: () -> Unit
@@ -67,7 +69,7 @@ fun GenderCard(
         )
 
         Image(
-            imageVector = Icons.Rounded.CalendarMonth,
+            imageVector = image,
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -93,7 +95,7 @@ fun GenderCard(
 @Composable
 private fun SelectedGenderCardPreview() {
     GenderCard(
-        title = "Online", selected = true
+        image = Icons.Rounded.CalendarMonth, title = "Online", selected = true
     ) {
 
     }
@@ -103,7 +105,7 @@ private fun SelectedGenderCardPreview() {
 @Composable
 private fun UnselectedGenderCardPreview() {
     GenderCard(
-        title = "Offline", selected = false
+        image = Icons.Rounded.CalendarMonth, title = "Offline", selected = false
     ) {
 
     }

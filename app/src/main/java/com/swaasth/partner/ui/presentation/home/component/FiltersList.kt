@@ -1,6 +1,9 @@
 package com.swaasth.partner.ui.presentation.home.component
 
+import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,14 +41,18 @@ import androidx.compose.ui.unit.sp
 import com.swaasth.partner.ui.component.DropdownInput
 import com.swaasth.partner.ui.theme.Blue80
 import com.swaasth.partner.ui.theme.Grey20
+import com.swaasth.partner.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FiltersList() {
+fun FiltersList(
+    onClick: () -> Unit = {}
+) {
     val datePickerState = rememberDatePickerState()
     var showDatePicker by remember { mutableStateOf(false) }
     var expandedState by remember { mutableStateOf(false) }
     var selectedItem by remember { mutableStateOf("Select a Time Slot") }
+    var selected by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -86,8 +93,13 @@ fun FiltersList() {
                     fontSize = 14.sp,
                     modifier = Modifier
                         .border(1.dp, Grey20, RoundedCornerShape(12.dp))
+                        .background(if (selected == it) Blue80 else White, RoundedCornerShape(12.dp))
                         .clip(RoundedCornerShape(12.dp))
                         .padding(16.dp, 8.dp)
+                        .clickable {
+                            selected = it
+                            Log.d("clicked", it)
+                        }
                 )
             }
         }
@@ -133,7 +145,7 @@ fun FiltersList() {
             }
 
             Button(
-                onClick = {},
+                onClick = onClick,
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.weight(1f).padding(start = 8.dp)
             ) {

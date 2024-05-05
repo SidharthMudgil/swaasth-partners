@@ -128,7 +128,7 @@ fun BookingHistoryScreen(
                     modifier = Modifier.weight(1f)
                 ) {
                     InputField(
-                        hint = "Enter Date",
+                        hint = "Enter Timing",
                         onValueChange = {},
                         outlined = true,
                         trailingIcon = Icons.Rounded.History,

@@ -29,6 +29,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -59,6 +60,7 @@ fun QualificationDetailsScreen(
     var expandedState by remember { mutableStateOf(false) }
     var expandedState1 by remember { mutableStateOf(false) }
     var selectedItem by remember { mutableStateOf("06:00 pm-07:00 pm") }
+    var totalItems by remember { mutableIntStateOf(1) }
 
     Scaffold {
         Column(
@@ -107,10 +109,10 @@ fun QualificationDetailsScreen(
                 modifier = Modifier.padding(top = 8.dp)
             )
             InputField(
-                hint = "Enter your clinic or hospital name", onValueChange = {  }, outlined = true
+                hint = "Enter your clinic or hospital name", onValueChange = { }, outlined = true
             )
             InputField(
-                hint = "Search for clinic location", onValueChange = {  }, outlined = true
+                hint = "Search for clinic location", onValueChange = { }, outlined = true
             )
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -186,11 +188,11 @@ fun QualificationDetailsScreen(
                     )
                 }
             }
-            
+
             InputField(
                 hint = "₹ Enter your fees", onValueChange = { }, outlined = true
             )
-            
+
             Text(
                 text = "Clinic timing",
                 fontWeight = FontWeight.SemiBold,
@@ -198,12 +200,28 @@ fun QualificationDetailsScreen(
                 modifier = Modifier.padding(8.dp)
             )
             DropdownInput(
-                selected = "06:00 pm-07:00 pm",
+                selected = selectedItem,
                 expanded = expandedState1,
                 items = listOf("06:00 pm-07:00 pm", "06:00 pm-07:00 pm", "06:00 pm-07:00 pm"),
                 onExpandedChange = { expandedState1 = !expandedState1 },
-                onValueChange = { it1 -> selectedItem = it1 },
-                onItemClick =  { it1 -> selectedItem = it1 }
+                onValueChange = { it1 ->
+                    if (totalItems < 3) {
+                        selectedItem += ", $it1"
+                        totalItems++
+                    } else {
+                        totalItems = 1
+                        selectedItem = it1
+                    }
+                },
+                onItemClick = { it1 ->
+                    if (totalItems < 3) {
+                        selectedItem += ", $it1"
+                        totalItems++
+                    } else {
+                        totalItems = 1
+                        selectedItem = it1
+                    }
+                }
             ) {
                 expandedState1 = false
             }

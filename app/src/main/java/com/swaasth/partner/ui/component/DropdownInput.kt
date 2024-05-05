@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.swaasth.partner.ui.theme.Grey10
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -19,9 +20,10 @@ fun DropdownInput(
     selected: String,
     expanded: Boolean,
     items: List<String>,
+    hint: String = "",
     onExpandedChange: () -> Unit,
     onValueChange: (value: String) -> Unit,
-    onItemClick: (value :String) -> Unit,
+    onItemClick: (value: String) -> Unit,
     onDismissRequest: () -> Unit
 ) {
     ExposedDropdownMenuBox(
@@ -34,6 +36,12 @@ fun DropdownInput(
     ) {
         OutlinedTextField(
             value = selected,
+            placeholder = {
+                Text(
+                    text = hint,
+                    color = Grey10
+                )
+            },
             shape = RoundedCornerShape(12.dp),
             onValueChange = { value -> onValueChange(value) },
             readOnly = true,

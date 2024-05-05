@@ -9,6 +9,11 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.CalendarMonth
+import androidx.compose.material.icons.rounded.Female
+import androidx.compose.material.icons.rounded.Male
+import androidx.compose.material.icons.rounded.Transgender
 import androidx.compose.material3.Button
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
@@ -76,6 +81,7 @@ fun PersonalDetailsScreen(
                 enabled = false,
                 readOnly = false,
                 outlined = true,
+                trailingIcon = Icons.Rounded.CalendarMonth,
                 onClick = { showDatePicker = true },
                 onValueChange = {}
             )
@@ -92,7 +98,7 @@ fun PersonalDetailsScreen(
                 Box(
                     modifier = Modifier.weight(1f)
                 ) {
-                    GenderCard(title = "Male", selected = gender == 0) {
+                    GenderCard(image = Icons.Rounded.Male, title = "Male", selected = gender == 0) {
                         gender = 0
                     }
                 }
@@ -100,7 +106,7 @@ fun PersonalDetailsScreen(
                 Box(
                     modifier = Modifier.weight(1f)
                 ) {
-                    GenderCard(title = "Female", selected = gender == 1) {
+                    GenderCard(image = Icons.Rounded.Female, title = "Female", selected = gender == 1) {
                         gender = 1
                     }
                 }
@@ -108,7 +114,7 @@ fun PersonalDetailsScreen(
                 Box(
                     modifier = Modifier.weight(1f)
                 ) {
-                    GenderCard(title = "Others", selected = gender == 2) {
+                    GenderCard(image = Icons.Rounded.Transgender, title = "Others", selected = gender == 2) {
                         gender = 2
                     }
                 }

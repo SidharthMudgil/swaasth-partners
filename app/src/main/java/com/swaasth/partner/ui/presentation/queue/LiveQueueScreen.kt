@@ -220,6 +220,9 @@ fun LiveQueueScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)
+                        .clickable {
+                            onClick()
+                        }
                 )
             }
         }

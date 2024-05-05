@@ -1,6 +1,8 @@
 package com.swaasth.partner.ui.presentation.add_patient
 
 import android.Manifest
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.widget.Toast
@@ -59,7 +61,7 @@ fun AddPatientScreen() {
     val timePickerState = rememberTimePickerState()
     var showTimePicker by remember { mutableStateOf(false) }
     var expandedState by remember { mutableStateOf(false) }
-    var selectedItem by remember { mutableStateOf("Select a Gender") }
+    var selectedItem by remember { mutableStateOf("") }
 
     val context = LocalContext.current
     val file = context.createImageFile()
@@ -83,6 +85,29 @@ fun AddPatientScreen() {
         if (it) {
             Toast.makeText(context, "Permission Granted", Toast.LENGTH_SHORT).show()
             cameraLauncher.launch(uri)
+        } else {
+            Toast.makeText(context, "Permission Denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    val galleryLauncher =
+        rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = it.data
+                if (data != null) {
+                    capturedImageUri = Uri.parse(data.data.toString())
+                }
+            }
+        }
+
+    val permissionLauncher1 = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) {
+        if (it) {
+            Toast.makeText(context, "Permission Granted", Toast.LENGTH_SHORT).show()
+            galleryLauncher.launch(Intent(Intent.ACTION_PICK))
         } else {
             Toast.makeText(context, "Permission Denied", Toast.LENGTH_SHORT).show()
         }
@@ -124,6 +149,7 @@ fun AddPatientScreen() {
                 onExpandedChange = {
                     expandedState = !expandedState
                 },
+                hint = "Select a Gender",
                 onValueChange = { value ->
                     selectedItem = value
                 },
@@ -182,12 +208,12 @@ fun AddPatientScreen() {
                     label = "Add Report"
                 ) {
                     val permissionCheckResult = ContextCompat.checkSelfPermission(
-                        context, Manifest.permission.CAMERA
+                        context, Manifest.permission.READ_EXTERNAL_STORAGE
                     )
                     if (permissionCheckResult == PackageManager.PERMISSION_GRANTED) {
-                        cameraLauncher.launch(uri)
+                        galleryLauncher.launch(Intent(Intent.ACTION_PICK))
                     } else {
-                        permissionLauncher.launch(Manifest.permission.CAMERA)
+                        permissionLauncher1.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
                     }
                 }
             }
