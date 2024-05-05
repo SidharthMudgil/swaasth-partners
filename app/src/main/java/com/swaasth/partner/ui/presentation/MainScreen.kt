@@ -50,7 +50,7 @@ fun MainScreen(
                     onNotificationClick = {
                         navController.navigate(HomeGraph.Notifications.route)
                     },
-                    onDoctorClick = {
+                    onDetailsClick = {
                         navController.navigate(HomeGraph.PatientDetails.route)
                     }
                 )

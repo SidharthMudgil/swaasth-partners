@@ -1,7 +1,6 @@
 package com.swaasth.partner.ui.presentation.home
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
@@ -21,7 +20,7 @@ import com.swaasth.partner.ui.presentation.home.component.FiltersList
 fun HomeScreen(
     onQrClick: () -> Unit,
     onNotificationClick: () -> Unit,
-    onDoctorClick: () -> Unit,
+    onDetailsClick: () -> Unit,
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -46,7 +45,7 @@ fun HomeScreen(
             )
         }
         item {
-            BookingList()
+            BookingList(onDetailsClick)
         }
     }
 }

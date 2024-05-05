@@ -15,7 +15,9 @@ import com.swaasth.partner.domain.model.Patient
 import com.swaasth.partner.ui.component.PatientItemCard
 
 @Composable
-fun BookingList() {
+fun BookingList(
+    onDetailsClick: () -> Unit
+) {
     val demoPatients = listOf(
         Patient(
             id = "1",
@@ -49,7 +51,7 @@ fun BookingList() {
             .padding(bottom = 16.dp)
     ) {
         items(demoPatients) {
-            PatientItemCard(it)
+            PatientItemCard(it, onClick = onDetailsClick)
         }
     }
 }
@@ -57,5 +59,5 @@ fun BookingList() {
 @Preview
 @Composable
 private fun BookingListPreview() {
-    BookingList()
+    BookingList{}
 }
