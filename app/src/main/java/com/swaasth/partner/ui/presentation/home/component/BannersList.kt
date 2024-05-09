@@ -82,7 +82,7 @@ fun BannersList() {
     }
 
     LaunchedEffect(key1 = pagerState.currentPage, block = {
-        delay(Duration.ofSeconds(1))
+        delay(Duration.ofSeconds(4))
         pagerState.scrollToPage((pagerState.currentPage + 1) % pageCount)
     })
 }
